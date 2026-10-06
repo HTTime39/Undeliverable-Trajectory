@@ -78,7 +78,7 @@ Additionally, upon completing a run, the player may gain a permanent increase in
 Space, dinosaurs
 
 ## Platform & Tools:
-Odin + Raylib
+PC, Odin + Raylib, Git + GitHub, Paint3D + GIMP
 
 ## Anything else unusual that needs explaining (if applicable):
 N/A
