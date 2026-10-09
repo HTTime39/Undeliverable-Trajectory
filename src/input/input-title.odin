@@ -11,7 +11,11 @@ titleMenuSelected : int = 0
 // Procedures for controlling the title menu
 TitleMenuUp :: proc() { 
   // Move up menu list
-  titleMenuSelected = abs((titleMenuSelected - 1) % len(render.TITLE_MENU))
+  if titleMenuSelected == len(render.TITLE_MENU) {
+    titleMenuSelected = len(render.TITLE_MENU) - 1
+  } else {
+    titleMenuSelected = abs((titleMenuSelected - 1) % len(render.TITLE_MENU))
+  }
 }
 TitleMenuDown :: proc() {
   // Move down menu list

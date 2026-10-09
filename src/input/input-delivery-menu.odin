@@ -7,7 +7,11 @@ import rl "vendor:raylib"
 // Procedures for controlling the delivery menu
 DeliveryMenuUp :: proc() { 
   // Move up menu list
-  state.selectedDelivery = abs((state.selectedDelivery - 1) % len(state.deliveryList))
+  if state.selectedDelivery == 0 {
+    state.selectedDelivery = len(state.deliveryList) - 1
+  } else {
+    state.selectedDelivery = abs((state.selectedDelivery - 1) % len(state.deliveryList))
+  }
 }
 
 DeliveryMenuDown :: proc() {
