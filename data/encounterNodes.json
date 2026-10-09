@@ -1,0 +1,55 @@
+[
+  {
+    "title": "Wild Stegosaurus",
+    "descriptions": "A wild stegasaurus blocks the path. Sneak around or try to distract it.",
+    "passPercentage": 0.80,
+    "passCount": 3,
+    "modifiers": [
+      {
+        "name": "berries",
+        "modifier": 0.05
+      },
+      {
+        "name": "leaves",
+        "modifier": 0.25
+      }
+    ],
+    "reward": ["none"],
+    "fail": ["healthN10"],
+    "consume": ["none"]
+  },
+  {
+    "title": "Steep Cliff",
+    "descriptions": "The only way down is a jagged rock face.",
+    "passPercentage": 0.75,
+    "passCount": 2,
+    "modifiers": [
+      {
+        "name": "rope",
+        "modifier": 0.25
+      },
+      {
+        "name": "vines",
+        "modifier": 0.05
+      }
+    ],
+    "reward": ["none"],
+    "fail": ["healthN10"],
+    "consume": ["stamina10"]
+  },
+  {
+    "title": "Viny Pass",
+    "descriptions": "The path narrows ahead with vines crossing through the undergrowth.",
+    "passPercentage": 0.55,
+    "passCount": 2,
+    "modifiers": [
+      {
+        "name": "knife",
+        "modifier": 0.30
+      }
+    ],
+    "reward": ["vines"],
+    "fail": ["staminaN5"],
+    "consume": ["none"]
+  }
+]
