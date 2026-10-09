@@ -20,6 +20,7 @@ main :: proc() {
     // deltaT := rl.GetFrameTime()
 
     rl.BeginDrawing()
+    rl.ClearBackground(rl.BLACK)
 
     switch gameState {
       case .TITLE:

@@ -10,7 +10,7 @@ Binding :: struct {
 }
 
 // Variable holding currently selected menu item
-menuSelected := 0
+menuSelected : int = 0
 
 // Procedures for controlling the title menu
 menuUp :: proc() { 
