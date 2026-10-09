@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Hamburger Combos",
+    "destination": "Pleiades Watchtower",
+    "payloads": [
+      {
+        "name": "Hamburgers",
+        "size": "s",
+        "weight": 2.0
+      },
+      {
+        "name": "French Fries",
+        "size": "s",
+        "weight": 1.0
+      },
+      {
+        "name": "Iced Tea",
+        "size": "s",
+        "weight": 2.0
+      }
+    ],
+    "small": 3,
+    "medium": 0,
+    "large": 0,
+    "encounterLayers": 8
+  },
+  {
+"title": "Electrolyte Rehydration Drinks",
+    "destination": "Martinez Laboratory",
+    "payloads": [
+      {
+        "name": "Electrolyte Rehydration Drink",
+        "size": "l",
+        "weight": 12.0
+      },
+      {
+        "name": "Electrolyte Rehydration Drink",
+        "size": "l",
+        "weight": 12.0
+      },
+      {
+        "name": "Electrolyte Rehydration Drink",
+        "size": "l",
+        "weight": 12.0
+      }
+    ],
+    "small": 0,
+    "medium": 0,
+    "large": 3,
+    "encounterLayers": 10
+  }
+]

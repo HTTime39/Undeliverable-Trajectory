@@ -7,11 +7,11 @@ WINDOW_HEIGHT :: 720\
 
 TITLE_SIZE :: 64
 TITLE_MENU_SIZE :: 48
-TITLE_MENU_SPACING :: 70
+TITLE_MENU_SPACING :: 70 // Vertical offsets
 
 TITLE_MENU:[2]cstring = {"Play", "Exit"}
 
-drawTitle :: proc(menuSelected: int) {
+DrawTitle :: proc(menuSelected: int) {
   rl.DrawText("Undeliverable Trajectory", (WINDOW_WIDTH - rl.MeasureText("Undeliverable Trajectory", TITLE_SIZE)) / 2, 200, TITLE_SIZE, rl.WHITE)
   
   for i in 0..<len(TITLE_MENU) {
