@@ -13,6 +13,7 @@ main :: proc() {
 
   // Load delivery menu data
   state.LoadDeliveriesData()
+  state.LoadEncounterNodes()
 
   for(!rl.WindowShouldClose() && state.isRunning) {
     // deltaT := rl.GetFrameTime()

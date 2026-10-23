@@ -1,5 +1,8 @@
 package state
 
+import "core:os"
+import "core:encoding/json"
+
 // Terminates the game loop when false
 isRunning : bool = true
 
@@ -15,4 +18,41 @@ gameState : GameState = GameState.TITLE
 
 DecrementState :: proc() {
   gameState = GameState(int(gameState) - 1)
+}
+
+// The delivery selected at the start of the game
+currentDelivery: Delivery
+
+// Contains all possible encounter nodes
+encounterNodeList : []EncounterNode 
+
+Item :: struct {
+  name: string,
+  modifier: f32
+}
+
+EncounterNode :: struct {
+  title: string,
+  descriptions: string,
+  passPercentage: f32,
+  passCount: int,
+  modifiers: []Item, // Items that have a modifer on the encounter
+  reward: []string, // Items and events that occur on passing the encounter
+  fail: []string, // Events that occur when the encounter is failed
+  consume: []string // Consumption events that trigger when attempting the encounter
+}
+
+LoadEncounterNodes :: proc() {
+  data, readError := os.read_entire_file("data/encounterNodes.json", context.allocator)
+  if readError == nil {
+    defer delete(data)
+  
+    parseError := json.unmarshal(data, &encounterNodeList)
+
+    if parseError != nil {
+      deliveryList = []Delivery{{title = "Couldn't load deliveries", destination = "", payloads = {}, encounterLayers = 0}}
+    }
+  } else {
+    deliveryList = []Delivery{{title = "Couldn't load deliveries", destination = "", payloads = {}, encounterLayers = 0}}
+  }
 }

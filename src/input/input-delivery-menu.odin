@@ -21,6 +21,7 @@ DeliveryMenuDown :: proc() {
 
 DeliveryMenuEnter :: proc() {
   state.currentDelivery = state.deliveryList[state.selectedDelivery]
+  state.GenerateMap()
   state.gameState = .MAP
   state.selectedDelivery = 0
 }

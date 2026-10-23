@@ -7,8 +7,6 @@ deliveryList : []Delivery
 
 selectedDelivery := 0
 
-currentDelivery: Delivery
-
 Payload :: struct {
   name: cstring,
   size: cstring,
