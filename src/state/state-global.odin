@@ -27,13 +27,13 @@ currentDelivery: Delivery
 encounterNodeList : []EncounterNode 
 
 Item :: struct {
-  name: string,
+  name: cstring,
   modifier: f32
 }
 
 EncounterNode :: struct {
-  title: string,
-  descriptions: string,
+  title: cstring,
+  descriptions: cstring,
   passPercentage: f32,
   passCount: int,
   modifiers: []Item, // Items that have a modifer on the encounter
