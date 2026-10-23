@@ -132,7 +132,7 @@ DrawNodeTitles :: proc() {
         if len(state.nodeMap[state.currentNodeLayer + i]) == 2 { 
           // When the current node layer has 2 nodes
           rl.DrawText(state.encounterNodeList[state.nodeMap[state.currentNodeLayer + i][j]].title, TWIN_OFFSET[j] + (-titleHalf + HEXAGON_SIZE)/2, textYOffset, NODE_TITLE_FSIZE, rl.WHITE)
-
+          
         } else {
           // All else, which is just when the node layer has 3 nodes
           rl.DrawText(state.encounterNodeList[state.nodeMap[state.currentNodeLayer + i][j]].title, TRIPLET_OFFSET[j] + (-titleHalf + HEXAGON_SIZE)/2, textYOffset, NODE_TITLE_FSIZE, rl.WHITE)
@@ -149,26 +149,38 @@ DrawMap :: proc() {
     for j in 0..<len(state.nodeMap[state.currentNodeLayer + i]) {
       if len(state.nodeMap[state.currentNodeLayer + i]) == 2 { 
         // When the current node layer has 2 nodes
-        DrawHexagon(TWIN_OFFSET[j], ROW_OFFSET[i], rl.PURPLE, HEXAGON_SIZE, true)
+        DrawHexagon(TWIN_OFFSET[j], ROW_OFFSET[i], rl.BLUE, HEXAGON_SIZE, true)
 
         if i == 1 && j == state.nextNodeSelection{
           DrawHexagon(TWIN_OFFSET[j], ROW_OFFSET[i], rl.YELLOW, HEXAGON_SIZE, true)
         }
 
+        if i == 0 && j == state.currentLayerIndex {
+          rl.DrawTexturePro(state.playerSprite, rl.Rectangle{0, 0, 28, 52}, rl.Rectangle{f32(TWIN_OFFSET[j]), f32(ROW_OFFSET[i]) - 35, 84, 156}, rl.Vector2{0, 0}, 0, rl.WHITE)
+        }
+
       } else if len(state.nodeMap[state.currentNodeLayer + i]) == 3 { 
         // When the current node layer has 3 nodes
-        DrawHexagon(TRIPLET_OFFSET[j], ROW_OFFSET[i], rl.PURPLE, HEXAGON_SIZE, true)
+        DrawHexagon(TRIPLET_OFFSET[j], ROW_OFFSET[i], rl.BLUE, HEXAGON_SIZE, true)
         
         if i == 1 && j == state.nextNodeSelection{
           DrawHexagon(TRIPLET_OFFSET[j], ROW_OFFSET[i], rl.YELLOW, HEXAGON_SIZE, true)
         }
 
+        if i == 0 && j == state.currentLayerIndex {
+          rl.DrawTexturePro(state.playerSprite, rl.Rectangle{0, 0, 28, 52}, rl.Rectangle{f32(TRIPLET_OFFSET[j]), f32(ROW_OFFSET[i]) - 35, 84, 156}, rl.Vector2{0, 0}, 0, rl.WHITE)
+        }
+
       } else { 
         // When the current node layer has 1 node
-        DrawHexagon(TRIPLET_OFFSET[1], ROW_OFFSET[i], rl.PURPLE, HEXAGON_SIZE, true)
+        DrawHexagon(TRIPLET_OFFSET[1], ROW_OFFSET[i], rl.BLUE, HEXAGON_SIZE, true)
 
         if i == 1 && j == state.nextNodeSelection{
           DrawHexagon(TRIPLET_OFFSET[1], ROW_OFFSET[i], rl.YELLOW, HEXAGON_SIZE, true)
+        }
+
+        if i == 0 && j == state.currentLayerIndex {
+          rl.DrawTexturePro(state.playerSprite, rl.Rectangle{0, 0, 28, 52}, rl.Rectangle{f32(TRIPLET_OFFSET[1]), f32(ROW_OFFSET[i]) - 35, 84, 156}, rl.Vector2{0, 0}, 0, rl.WHITE)
         }
       }
     }

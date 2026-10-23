@@ -66,3 +66,5 @@ LoadEncounterNodes :: proc() {
 
 encounterBackgrounds : rl.Texture2D
 encounterBGIndex := 0
+
+playerSprite : rl.Texture2D

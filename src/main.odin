@@ -17,7 +17,7 @@ main :: proc() {
 
   // Load images
 	state.encounterBackgrounds = rl.LoadTexture("assets/encounter-backgrounds.png")
-
+  state.playerSprite = rl.LoadTexture("assets/player.png")
 
   for(!rl.WindowShouldClose() && state.isRunning) {
     // deltaT := rl.GetFrameTime()
