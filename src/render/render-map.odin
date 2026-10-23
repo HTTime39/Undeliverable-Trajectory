@@ -19,6 +19,11 @@ yComp := i32(yCompF)
 
 // x and y are the pixel coordinates of the top right corner of the hexigon
 DrawHexagon :: proc(x: i32, y: i32, colour: rl.Color, sLength: i32, isFilled: bool) { 
+  xCompF := math.round(f32(sLength) * 0.5) // 0.5 = cos(60)
+  xComp := i32(xCompF)
+  yCompF := math.round(f32(sLength) * 0.866025) // 0.866025 ~ sin(60)
+  yComp := i32(yCompF)
+
   rl.DrawLine(x, y, x+sLength, y, colour) // Top, wind clockwise
   rl.DrawLine(x+sLength, y, x+sLength+xComp, y+yComp, colour)
   rl.DrawLine(x+sLength+xComp, y+yComp, x+sLength, y+2*yComp, colour)

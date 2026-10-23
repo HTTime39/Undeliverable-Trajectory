@@ -15,6 +15,10 @@ main :: proc() {
   state.LoadDeliveriesData()
   state.LoadEncounterNodes()
 
+  // Load images
+	state.encounterBackgrounds = rl.LoadTexture("assets/encounter-backgrounds.png")
+
+
   for(!rl.WindowShouldClose() && state.isRunning) {
     // deltaT := rl.GetFrameTime()
 

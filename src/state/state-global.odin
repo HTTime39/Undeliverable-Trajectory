@@ -2,6 +2,7 @@ package state
 
 import "core:os"
 import "core:encoding/json"
+import rl "vendor:raylib"
 
 // Terminates the game loop when false
 isRunning : bool = true
@@ -23,6 +24,8 @@ DecrementState :: proc() {
 
 // The delivery selected at the start of the game
 currentDelivery: Delivery
+
+// --------------------------------------------------
 
 // Contains all possible encounter nodes
 encounterNodeList : []EncounterNode 
@@ -58,3 +61,8 @@ LoadEncounterNodes :: proc() {
     deliveryList = []Delivery{{title = "Couldn't load deliveries", destination = "", payloads = {}, encounterLayers = 0}}
   }
 }
+
+// --------------------------------------------------
+
+encounterBackgrounds : rl.Texture2D
+encounterBGIndex := 0

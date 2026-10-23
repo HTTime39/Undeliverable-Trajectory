@@ -12,6 +12,10 @@ RandomPickNodeIndex :: proc() -> int {
 }
 
 GenerateMap :: proc() {
+  currentNodeLayer = 0
+  currentLayerIndex = 0
+  nextNodeSelection = 0
+  
   for layer in nodeMap {
     delete(layer)
   }

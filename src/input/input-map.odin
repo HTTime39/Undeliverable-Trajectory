@@ -3,6 +3,7 @@ package input
 import "../state"
 
 import rl "vendor:raylib"
+import "core:math/rand"
 
 NodeSelectLeft :: proc() {
   if (state.nextNodeSelection == 0) {
@@ -21,9 +22,12 @@ NodeSelectEnter :: proc() {
   state.currentNodeLayer += 1
   state.currentLayerIndex = state.nextNodeSelection
   // Cleanup
-  state.currentEncounter = state.encounterNodeList[state.nodeMap[state.currentNodeLayer][state.nextNodeSelection]]
+  if state.nodeMap[state.currentNodeLayer][state.nextNodeSelection] != -2 {
+    state.currentEncounter = state.encounterNodeList[state.nodeMap[state.currentNodeLayer][state.nextNodeSelection]]
+  }
   state.nextNodeSelection = 0
   state.gameState = .ENCOUNTER
+  state.encounterBGIndex = rand.int_range(0, 9)
 }
 
 MAP_BINDINGS:[6]Binding = {
