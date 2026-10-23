@@ -146,13 +146,25 @@ DrawMap :: proc() {
         // When the current node layer has 2 nodes
         DrawHexagon(TWIN_OFFSET[j], ROW_OFFSET[i], rl.PURPLE, HEXAGON_SIZE, true)
 
+        if i == 1 && j == state.nextNodeSelection{
+          DrawHexagon(TWIN_OFFSET[j], ROW_OFFSET[i], rl.YELLOW, HEXAGON_SIZE, true)
+        }
+
       } else if len(state.nodeMap[state.currentNodeLayer + i]) == 3 { 
         // When the current node layer has 3 nodes
         DrawHexagon(TRIPLET_OFFSET[j], ROW_OFFSET[i], rl.PURPLE, HEXAGON_SIZE, true)
+        
+        if i == 1 && j == state.nextNodeSelection{
+          DrawHexagon(TRIPLET_OFFSET[j], ROW_OFFSET[i], rl.YELLOW, HEXAGON_SIZE, true)
+        }
 
       } else { 
         // When the current node layer has 1 node
         DrawHexagon(TRIPLET_OFFSET[1], ROW_OFFSET[i], rl.PURPLE, HEXAGON_SIZE, true)
+
+        if i == 1 && j == state.nextNodeSelection{
+          DrawHexagon(TRIPLET_OFFSET[1], ROW_OFFSET[i], rl.YELLOW, HEXAGON_SIZE, true)
+        }
       }
     }
   }

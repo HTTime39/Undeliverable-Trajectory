@@ -16,7 +16,7 @@ DeliveryMenuUp :: proc() {
 
 DeliveryMenuDown :: proc() {
   // Move down menu list
-  state.selectedDelivery = abs((state.selectedDelivery + 1) % len(state.deliveryList))
+  state.selectedDelivery = (state.selectedDelivery + 1) % len(state.deliveryList)
 }
 
 DeliveryMenuEnter :: proc() {
@@ -32,7 +32,7 @@ DELIVERY_BINDINGS:[6]Binding = {
   {.S, DeliveryMenuDown},
   {.DOWN, DeliveryMenuDown},
   {.ENTER, DeliveryMenuEnter},
-  {.BACKSPACE, state.DecrementState}
+  {.BACKSPACE, state.DecrementState},
 }
 
 ControlDeliveryMenu :: proc() {

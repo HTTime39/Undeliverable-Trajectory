@@ -11,6 +11,7 @@ GameState :: enum {
   TITLE, 
   DELIVERY_MENU,
   MAP,
+  ENCOUNTER
 }
 
 // Current game state
@@ -25,6 +26,7 @@ currentDelivery: Delivery
 
 // Contains all possible encounter nodes
 encounterNodeList : []EncounterNode 
+currentEncounter : EncounterNode
 
 Item :: struct {
   name: cstring,

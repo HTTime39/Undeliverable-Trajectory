@@ -23,14 +23,17 @@ main :: proc() {
 
     switch state.gameState {
       case .TITLE:
-        input.ControlTitleMenu()
         render.DrawTitle(input.titleMenuSelected)
+        input.ControlTitleMenu()
       case .DELIVERY_MENU:
-        input.ControlDeliveryMenu()
         render.DrawDeliveryMenu()
+        input.ControlDeliveryMenu()
       case .MAP:
-        input.ControlMap()
         render.DrawMap()
+        input.ControlMap()
+      case .ENCOUNTER:
+        render.DrawEncounter()
+        input.ControlEncounter()
     }
 
 		rl.EndDrawing()
