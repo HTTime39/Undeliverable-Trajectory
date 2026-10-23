@@ -3,6 +3,8 @@ package state
 import "core:math/rand"
 
 nodeMap : [dynamic][]int // Each row of the array is a layer of the map, indices stored here are used in reference to state.encounterNodeList
+currentNodeLayer := 0 // The current encounter layer the player is at
+currentLayerIndex := 0 // The current index of the current layer the player is at
 
 RandomPickNodeIndex :: proc() -> int {
   return rand.int_range(0, len(encounterNodeList))
