@@ -14,9 +14,14 @@
         "modifier": 0.25
       }
     ],
-    "reward": ["none"],
-    "fail": ["healthN10"],
-    "consume": ["none"]
+    "reward": [],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -10
+      }
+    ],
+    "consume": []
   },
   {
     "title": "Steep Cliff",
@@ -33,9 +38,19 @@
         "modifier": 0.05
       }
     ],
-    "reward": ["none"],
-    "fail": ["healthN10"],
-    "consume": ["stamina10"]
+    "reward": [],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -10
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
+        "amount": -10
+      }
+    ]
   },
   {
     "title": "Viny Pass",
@@ -48,8 +63,18 @@
         "modifier": 0.30
       }
     ],
-    "reward": ["vines"],
-    "fail": ["staminaN5"],
-    "consume": ["none"]
+    "reward": [
+      {
+        "name": "vines",
+        "amount": 1
+      }
+    ],
+    "fail": [
+      {
+        "name": "stamina",
+        "amount": -5
+      }
+    ],
+    "consume": []
   }
 ]

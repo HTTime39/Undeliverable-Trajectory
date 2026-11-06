@@ -8,7 +8,7 @@ deliveryList : []Delivery
 selectedDelivery := 0
 
 Payload :: struct {
-  name: cstring,
+  name: string,
   size: cstring,
   weight: f32
 }

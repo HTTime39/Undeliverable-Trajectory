@@ -1,0 +1,25 @@
+{
+
+  "berries": {
+    "size": "s",
+    "weight": 1.0
+  }, 
+  "knife":
+  {
+    "size": "s",
+    "weight": 0.25
+  },
+  "leaves":{
+    "size": "s",
+    "weight": 0.25
+  },
+  "rope":{
+    "size": "s",
+    "weight": 0.5
+  },
+  "vines":
+  {
+    "size": "s",
+    "weight": 0.25
+  }
+}

@@ -14,6 +14,8 @@ main :: proc() {
   // Load delivery menu data
   state.LoadDeliveriesData()
   state.LoadEncounterNodes()
+  
+  state.LoadItemDictionary()
 
   // Load images
 	state.encounterBackgrounds = rl.LoadTexture("assets/encounter-backgrounds.png")
