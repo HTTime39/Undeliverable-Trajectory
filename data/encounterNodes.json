@@ -1,7 +1,7 @@
 [
   {
     "title": "Wild Stegosaurus",
-    "descriptions": "A wild stegasaurus blocks the path. Sneak around or try to distract it.",
+    "description": "A wild stegasaurus blocks the path. Sneak around or try to distract it.",
     "passPercentage": 0.80,
     "passCount": 3,
     "modifiers": [
@@ -25,7 +25,7 @@
   },
   {
     "title": "Steep Cliff",
-    "descriptions": "The only way down is a jagged rock face.",
+    "description": "The only way down is a jagged rock face.",
     "passPercentage": 0.75,
     "passCount": 2,
     "modifiers": [
@@ -54,7 +54,7 @@
   },
   {
     "title": "Viny Pass",
-    "descriptions": "The path narrows ahead with vines crossing through the undergrowth.",
+    "description": "The path narrows ahead with vines crossing through the undergrowth.",
     "passPercentage": 0.55,
     "passCount": 2,
     "modifiers": [

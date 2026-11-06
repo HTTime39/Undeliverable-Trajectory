@@ -1,7 +1,7 @@
 package input
 
 import "../state"
-
+import "core:fmt"
 import rl "vendor:raylib"
 
 // Procedures for controlling the delivery menu
@@ -24,6 +24,10 @@ DeliveryMenuEnter :: proc() {
   state.GenerateMap()
   state.gameState = .MAP
   state.selectedDelivery = 0
+
+  for payload in state.currentDelivery.payloads {
+    append(&state.player.bag, payload)
+  }
 }
 
 DELIVERY_BINDINGS:[6]Binding = {

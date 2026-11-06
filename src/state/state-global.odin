@@ -2,6 +2,7 @@ package state
 
 import "core:os"
 import "core:fmt"
+import "core:strings"
 import "core:encoding/json"
 import rl "vendor:raylib"
 
@@ -44,7 +45,7 @@ Event :: struct {
 
 EncounterNode :: struct {
   title: cstring,
-  descriptions: cstring,
+  description: cstring,
   passPercentage: f32,
   passCount: int,
   modifiers: []Item, // Items that have a modifer on the encounter
@@ -157,7 +158,7 @@ AddItemToBag :: proc(item: string, amount: int) -> string {
 
   // Adds to bag if it fits
   if currentVolume + itemSize <= player.bagVolume && currentWeight + itemDictionary[item].weight <= player.bagCapacity {
-    append(&player.bag, Payload{name=item, size=itemDictionary[item].size, weight=itemDictionary[item].weight})
+    append(&player.bag, Payload{name=strings.clone_to_cstring(item), size=itemDictionary[item].size, weight=itemDictionary[item].weight})
     return string(fmt.ctprintf("Added %s to bag", item))
   } else {
     return string(fmt.ctprintf("No room to add %s to bag", item))
