@@ -28,6 +28,9 @@ NodeSelectEnter :: proc() {
   state.nextNodeSelection = 0
   state.gameState = .ENCOUNTER
   state.encounterBGIndex = rand.int_range(0, 9)
+
+  // Setup
+  state.ClearUsingItems()
 }
 
 MAP_BINDINGS:[6]Binding = {

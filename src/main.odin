@@ -22,7 +22,7 @@ main :: proc() {
   state.playerSprite = rl.LoadTexture("assets/player.png")
 
   for(!rl.WindowShouldClose() && state.isRunning) {
-    // deltaT := rl.GetFrameTime()
+    deltaT := rl.GetFrameTime()
 
     rl.BeginDrawing()
     rl.ClearBackground(rl.BLACK)
@@ -38,7 +38,7 @@ main :: proc() {
         render.DrawMap()
         input.ControlMap()
       case .ENCOUNTER:
-        render.DrawEncounter()
+        render.DrawEncounter(deltaT)
         input.ControlEncounter()
     }
 
