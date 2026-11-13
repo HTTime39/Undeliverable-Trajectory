@@ -1,30 +1,5 @@
 [
   {
-    "title": "Wild Stegosaurus",
-    "description": "A wild stegasaurus blocks the path. Sneak around or try to distract it.",
-    "passPercentage": 0.80,
-    "passCount": 3,
-    "modifiers": [
-      {
-        "name": "berries",
-        "modifier": 0.05
-      },
-      {
-        "name": "leaves",
-        "modifier": 0.25
-      }
-    ],
-    "reward": [],
-    "fail": [
-      {
-        "name": "health",
-        "amount": -10
-      }
-    ],
-    "consume": [],
-    "image": "triceratops"
-  },
-  {
     "title": "Steep Cliff",
     "description": "The only way down is a jagged rock face.",
     "passPercentage": 0.75,
@@ -79,5 +54,60 @@
     ],
     "consume": [],
     "image": ""
+  },
+  {
+    "title": "Wild Triceratops",
+    "description": "A wild triceratops blocks the path. Sneak around or try to distract it.",
+    "passPercentage": 0.80,
+    "passCount": 3,
+    "modifiers": [
+      {
+        "name": "berries",
+        "modifier": 0.05
+      },
+      {
+        "name": "leaves",
+        "modifier": 0.25
+      }
+    ],
+    "reward": [],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -10
+      }
+    ],
+    "consume": [],
+    "image": "triceratops"
+  },
+  {
+    "title": "Wild Rex",
+    "description": "A wild rex appears. It might be best to avoid a confrontation.",
+    "passPercentage": 0.75,
+    "passCount": 5,
+    "modifiers": [
+      {
+        "name": "meat",
+        "modifier": 0.05
+      },
+      {
+        "name": "knife",
+        "modifier": -0.25
+      }
+    ],
+    "reward": [],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -30
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
+        "amount": -15
+      }
+    ],
+    "image": "rex"
   }
 ]
