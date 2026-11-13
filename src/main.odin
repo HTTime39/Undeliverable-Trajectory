@@ -47,7 +47,7 @@ main :: proc() {
         input.ControlMap()
       case .ENCOUNTER:
         render.DrawEncounter(deltaT)
-        input.ControlEncounter()
+        if !state.isAnimating do input.ControlEncounter()
     }
 
 		rl.EndDrawing()

@@ -6,6 +6,7 @@ import rl "vendor:raylib"
 
 // Terminates the game loop when false
 isRunning : bool = true
+isAnimating : bool = true
 
 // The states the game can be in
 GameState :: enum {

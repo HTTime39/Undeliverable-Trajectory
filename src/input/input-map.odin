@@ -31,6 +31,7 @@ NodeSelectEnter :: proc() {
 
   // Setup
   state.ClearUsingItems()
+  state.isAnimating = true
 }
 
 MAP_BINDINGS:[6]Binding = {
