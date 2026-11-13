@@ -20,6 +20,8 @@ DrawEncounter :: proc(deltaT:f32) {
 
   DrawEncounterDialogue(state.currentEncounter.title, state.currentEncounter.description)
   DrawBagMenu(state.player.bag)
+
+  DrawStatus()
 }
 
 DrawEncounterDialogue :: proc(title:cstring, description:cstring="") {
@@ -120,6 +122,8 @@ AnimateEncounterEntry :: proc(deltaT:f32) {
 
   DrawEncounterDialogue(state.currentEncounter.title)
   DrawBagMenu({})
+
+  DrawStatus()
 
   if animTimer >= math.sum(secTimers) || (state.currentEncounter.image == "" && animTimer >= secTimers[0]) {
     // Cleanup at the end of the animation

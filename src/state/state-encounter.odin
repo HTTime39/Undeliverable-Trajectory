@@ -24,22 +24,8 @@ ModifyStamina :: proc(amount: int) {
 }
 
 AddItemToBag :: proc(item: string, amount: int) -> string {
-  currentWeight : f32 = 0.0
-  currentVolume := 0
+  currentWeight, currentVolume := GetBagInfo(player)
 
-  for payload in player.bag {
-    currentWeight += payload.weight
-    switch payload.size {
-      case "s":
-        currentVolume += 1
-      case "m": 
-        currentVolume += 2
-      case "l":
-        currentVolume += 4
-      case:
-        // Does nothing, should never hit this
-    }
-  }
   // Translating item size into an integer
   itemSize : int
   switch itemDictionary[item].size {

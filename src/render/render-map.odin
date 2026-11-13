@@ -187,4 +187,6 @@ DrawMap :: proc() {
   }
 
   DrawNodeTitles()
+
+  DrawStatus()
 }

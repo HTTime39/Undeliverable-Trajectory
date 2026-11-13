@@ -104,16 +104,41 @@ ItemBagInfo :: struct {
 
 PlayerState :: struct {
   hp : int,
+  cHp : int, 
   stamina : int,
+  cStamina : int,
   bagCapacity : f32,
   bagVolume : int, 
   bag : [dynamic]Payload, // Payloads make reference to item names to retrieve an associated modifier
 }
 
+GetBagInfo :: proc(p:PlayerState) -> (f32, int) {
+  // Returns the passed player's current bag WEIGHT and VOLUME
+  weight : f32 = 0.0
+  volume : int = 0
+
+  for payload in player.bag {
+    weight += payload.weight
+    switch payload.size {
+      case "s":
+        volume += 1
+      case "m": 
+        volume += 2
+      case "l":
+        volume += 4
+      case:
+        // Does nothing, should never hit this
+    }
+  }
+  return weight, volume
+}
+
 player : PlayerState = {
   100,
   100,
-  20.0,
+  100,
+  100,
+  100.0,
   8,
   [dynamic]Payload{}
 }
