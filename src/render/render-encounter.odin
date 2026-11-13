@@ -8,6 +8,7 @@ DrawEncounter :: proc(deltaT:f32) {
   rl.DrawTexturePro(state.encounterBackgrounds, rl.Rectangle{f32(128*state.encounterBGIndex), 0, 128, 72}, rl.Rectangle{0, -150, 1280, 720}, rl.Vector2{0,0}, 0.0, rl.WHITE)
 
   rl.DrawTexturePro(state.playerSprite, rl.Rectangle{0, 0, 28, 52}, rl.Rectangle{550, 290, 168, 312}, rl.Vector2{0, 0}, 0, rl.WHITE)
+  DrawEncounterEntity()
 
   DrawEncounterDialogue(state.currentEncounter.title, state.currentEncounter.description)
   DrawBagMenu(state.player.bag)
@@ -59,3 +60,13 @@ DrawBagMenu :: proc(inventory:[dynamic]state.Payload) {
   rl.DrawLineEx(rl.Vector2{807, 0}, rl.Vector2{807, 570}, 10, rl.YELLOW)
   rl.DrawRectangle(800, 0, 10, 570, rl.PURPLE)
 } 
+
+DrawEncounterEntity :: proc() {
+  if state.currentEncounter.image != "" {
+    rl.DrawTexturePro(
+      state.encounterSprites[state.currentEncounter.image], 
+      rl.Rectangle{0, 0, 64, 64}, 
+      rl.Rectangle{-100, -20, 540, 620}, 
+      rl.Vector2{0, 0}, 0, rl.WHITE)
+  }
+}

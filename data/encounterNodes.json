@@ -21,7 +21,8 @@
         "amount": -10
       }
     ],
-    "consume": []
+    "consume": [],
+    "image": "triceratops"
   },
   {
     "title": "Steep Cliff",
@@ -50,7 +51,8 @@
         "name": "stamina",
         "amount": -10
       }
-    ]
+    ],
+    "image": ""
   },
   {
     "title": "Viny Pass",
@@ -75,6 +77,7 @@
         "amount": -5
       }
     ],
-    "consume": []
+    "consume": [],
+    "image": ""
   }
 ]

@@ -4,6 +4,7 @@ import "state"
 import "render"
 import "input"
 
+import "core:fmt"
 import rl "vendor:raylib"
 
 main :: proc() {
@@ -20,6 +21,13 @@ main :: proc() {
   // Load images
 	state.encounterBackgrounds = rl.LoadTexture("assets/encounter-backgrounds.png")
   state.playerSprite = rl.LoadTexture("assets/player.png")
+
+  // Load images for encounter specific sprites into map
+  for node in state.encounterNodeList {
+    if node.image != "" {
+      state.encounterSprites[string(node.image)] = rl.LoadTexture(fmt.ctprintf("assets/%s.png", node.image))
+    }
+  }
 
   for(!rl.WindowShouldClose() && state.isRunning) {
     deltaT := rl.GetFrameTime()

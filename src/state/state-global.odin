@@ -1,8 +1,6 @@
 package state
 
 import "core:os"
-import "core:fmt"
-import "core:strings"
 import "core:encoding/json"
 import rl "vendor:raylib"
 
@@ -51,7 +49,8 @@ EncounterNode :: struct {
   modifiers: []Item, // Items that have a modifer on the encounter
   reward: []Event, // Items and events that occur on passing the encounter
   fail: []Event, // Events that occur when the encounter is failed
-  consume: []Event // Consumption events that trigger when attempting the encounter
+  consume: []Event, // Consumption events that trigger when attempting the encounter
+  image: string // Name of the .png file associated with something that should be displayed in this encounter
 }
 
 LoadEncounterNodes :: proc() {
@@ -116,51 +115,4 @@ player : PlayerState = {
   20.0,
   8,
   [dynamic]Payload{}
-}
-
-ModifyHealth :: proc(amount: int) {
-  player.hp += amount
-}
-
-ModifyStamina :: proc(amount: int) {
-  player.stamina += amount
-}
-
-AddItemToBag :: proc(item: string, amount: int) -> string {
-  currentWeight : f32 = 0.0
-  currentVolume := 0
-
-  for payload in player.bag {
-    currentWeight += payload.weight
-    switch payload.size {
-      case "s":
-        currentVolume += 1
-      case "m": 
-        currentVolume += 2
-      case "l":
-        currentVolume += 4
-      case:
-        // Does nothing, should never hit this
-    }
-  }
-  // Translating item size into an integer
-  itemSize : int
-  switch itemDictionary[item].size {
-    case "s":
-      itemSize = 1
-    case "m":
-      itemSize = 2
-    case "l":
-      itemSize = 4
-    case:
-      // Does nothing, should never hit this
-  }
-
-  // Adds to bag if it fits
-  if currentVolume + itemSize <= player.bagVolume && currentWeight + itemDictionary[item].weight <= player.bagCapacity {
-    append(&player.bag, Payload{name=strings.clone_to_cstring(item), size=itemDictionary[item].size, weight=itemDictionary[item].weight})
-    return string(fmt.ctprintf("Added %s to bag", item))
-  } else {
-    return string(fmt.ctprintf("No room to add %s to bag", item))
-  }
 }
