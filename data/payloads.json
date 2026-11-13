@@ -13,6 +13,10 @@
     "size": "s",
     "weight": 0.25
   },
+  "meat":{
+    "size": "m",
+    "weight": 5.0
+  },
   "rope":{
     "size": "s",
     "weight": 0.5

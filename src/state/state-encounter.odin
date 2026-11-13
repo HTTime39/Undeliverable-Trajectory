@@ -10,17 +10,19 @@ usingItems : [dynamic]bool // These are the items that will get used, indices
 encounterSprites: map[string]rl.Texture2D
 
 ClearUsingItems :: proc() {
+  usingItems = {}
+
   for i in 0..<len(player.bag) {
     append(&usingItems, false)
   }
 }
 
 ModifyHealth :: proc(amount: int) {
-  player.hp += amount
+  player.cHp += amount
 }
 
 ModifyStamina :: proc(amount: int) {
-  player.stamina += amount
+  player.cStamina += amount
 }
 
 AddItemToBag :: proc(item: string, amount: int) -> string {
