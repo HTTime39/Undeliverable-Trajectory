@@ -7,6 +7,10 @@ import rl "vendor:raylib"
 bagSelected := 0
 usingItems : [dynamic]bool // These are the items that will get used, indices
 
+isRolling : bool = false // Whether or not the dice roll animation is playing
+isRollComplete : bool = false
+rollResults : [5]bool
+
 encounterSprites: map[string]rl.Texture2D
 
 ClearUsingItems :: proc() {

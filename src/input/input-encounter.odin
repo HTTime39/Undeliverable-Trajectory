@@ -17,6 +17,14 @@ ENCOUNTER_BINDINGS:[]Binding = {
 }
 
 RollEncounter :: proc() {
+  if state.isRollComplete {
+    // Returning to the map if the roll has already been made this encounter
+    state.gameState = .MAP
+    state.isRolling = false
+    state.isRollComplete = false
+    return
+  }
+
   // Preparing for roll
   rollSuccessChance := state.currentEncounter.passPercentage
   rollCount := state.currentEncounter.passCount
@@ -54,8 +62,10 @@ RollEncounter :: proc() {
     if rand.float32() <= state.currentEncounter.passPercentage {
     // Increment the success counter when a roll passes
       successes += 1
+      state.rollResults[i] = true
       fmt.println("Success")
     } else {
+      state.rollResults[i] = false
       fmt.println("Fail")
     }
   }
@@ -63,7 +73,7 @@ RollEncounter :: proc() {
   fmt.println(fmt.ctprint("Passing ", successes, " / ", state.currentEncounter.passCount))
 
   // Triggering reward effects
-  if successes > state.currentEncounter.passCount {
+  if successes >= state.currentEncounter.passCount {
     fmt.println("Triggering rewards...")
     for reward in state.currentEncounter.reward {
       switch reward.name {
@@ -113,9 +123,10 @@ RollEncounter :: proc() {
   fmt.println(state.player.cStamina)
   fmt.println("-----COMPLETED ENCOUNTER-----")
 
-  // Returning to the map
+  // Cleanup
   state.ClearUsingItems()
-  state.gameState = .MAP
+  state.isAnimating = true
+  state.isRolling = true
 }
 
 InventorySelectUp :: proc() {

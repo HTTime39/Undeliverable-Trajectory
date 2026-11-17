@@ -2,15 +2,17 @@ package render
 
 import "../state"
 
+import "core:fmt"
 import "core:math"
 import rl "vendor:raylib"
 
 animTimer : f32 = 0.0
+rollAngle : f32 = 0.0
 
 DrawEncounter :: proc(deltaT:f32) {
   rl.DrawTexturePro(state.encounterBackgrounds, rl.Rectangle{f32(128*state.encounterBGIndex), 0, 128, 72}, rl.Rectangle{0, -150, 1280, 720}, rl.Vector2{0,0}, 0.0, rl.WHITE)
   
-  if state.isAnimating {
+  if state.isAnimating && !state.isRolling {
     AnimateEncounterEntry(deltaT)
     return
   }
@@ -18,13 +20,21 @@ DrawEncounter :: proc(deltaT:f32) {
   rl.DrawTexturePro(state.playerSprite, rl.Rectangle{0, 0, 28, 52}, rl.Rectangle{550, 290, 168, 312}, rl.Vector2{0, 0}, 0, rl.WHITE)
   DrawEncounterEntity()
 
-  DrawEncounterDialogue(state.currentEncounter.title, state.currentEncounter.description)
+  DrawEncounterDialogue(state.currentEncounter.title, state.currentEncounter.description, state.currentEncounter.passPercentage, state.currentEncounter.passCount)
   DrawBagMenu(state.player.bag)
 
-  DrawStatus()
+  // Hide the status bar while animating to prevent spoiling the results; 
+  // maybe do something different with this later
+  if !state.isAnimating {
+    DrawStatus()
+  }
+
+  if state.isRolling {
+    DrawRoll(state.rollResults, deltaT)
+  }
 }
 
-DrawEncounterDialogue :: proc(title:cstring, description:cstring="") {
+DrawEncounterDialogue :: proc(title:cstring, description:cstring="", passPercentage:f32=-1, passCount:int=-1) {
   rl.DrawRectangle(0, 570, 1280, 150, rl.BLACK)
   
   rl.DrawText(title, 20, 590, 32, rl.WHITE)
@@ -32,6 +42,9 @@ DrawEncounterDialogue :: proc(title:cstring, description:cstring="") {
   rl.DrawLineEx(rl.Vector2{0, 632}, rl.Vector2{42 + f32(rl.MeasureText(title, 32)), 632}, 5, rl.YELLOW)
 
   rl.DrawText(description, 20, 650, 28, rl.WHITE)
+  if passPercentage != -1 { // Only draw when there's an actual value
+    rl.DrawText(fmt.ctprintf("Roll Success: %d%%   Successes to Pass: %d", int(passPercentage*100), passCount), 20, 688, 28, rl.WHITE)
+  }
   
   rl.DrawLineEx(rl.Vector2{0, 577}, rl.Vector2{1280, 577}, 10, rl.YELLOW)
   rl.DrawRectangle(0, 570, 1280, 10, rl.PURPLE)
@@ -129,5 +142,63 @@ AnimateEncounterEntry :: proc(deltaT:f32) {
     // Cleanup at the end of the animation
     state.isAnimating = false
     animTimer = 0.0
+  }
+}
+
+DrawRoll :: proc (results : [5]bool, deltaT: f32) {
+  rl.DrawRectangle(0, 210, 1280, 300, rl.ColorAlpha(rl.BLACK, 0.6))
+
+  diceWidth : f32 = 175.0
+  if !state.isRollComplete {
+    rollAngle += 6 // degrees / 1/60 second ~ this is about 1 rotation per second
+    animTimer += deltaT
+  }
+
+  for result, i in results {
+    if animTimer < f32(i)/2 + 1.0 && !state.isRollComplete { // Added integer let's them roll a little before stopping
+      rl.DrawRectanglePro(rl.Rectangle{190+225*f32(i), 360, diceWidth, diceWidth}, rl.Vector2{diceWidth/2, diceWidth/2}, rollAngle, rl.PURPLE)
+      rl.DrawRectanglePro(rl.Rectangle{190+225*f32(i), 360, diceWidth-10, diceWidth-10}, rl.Vector2{(diceWidth)/2-5, (diceWidth)/2-5}, rollAngle, rl.YELLOW)
+    
+    } else {
+      c := rl.RED
+      t : cstring= "FAIL"
+      if result {
+        c = rl.GREEN
+        t = "PASS"
+      }
+
+      rl.DrawRectanglePro(rl.Rectangle{190+225*f32(i), 360, diceWidth, diceWidth}, rl.Vector2{diceWidth/2, diceWidth/2}, 0, rl.PURPLE)
+      rl.DrawRectanglePro(rl.Rectangle{190+225*f32(i), 360, diceWidth-10, diceWidth-10}, rl.Vector2{(diceWidth)/2-5, (diceWidth)/2-5}, 0, c)
+
+      rl.DrawText(t, i32(190 + 225*i) - rl.MeasureText(t, 55)/2, 332, 55, rl.WHITE)
+    }
+
+    // Draw PASSED or FAILED depending on outcome of the rolls vs the encounter
+    if state.isRollComplete {
+      successes := 0
+      for result in results {
+        if result {
+          successes += 1
+        }
+      }
+
+      c := rl.RED
+      t : cstring = "FAILED"
+
+      if successes >= state.currentEncounter.passCount {
+        c = rl.GREEN
+        t = "PASSED"
+      }
+
+      rl.DrawText(t, 640 - rl.MeasureText(t, 60)/2, 215, 60, c)
+    }
+  }
+
+  // Cleanup
+  if animTimer > 3.5 {
+    animTimer = 0.0
+    rollAngle = 0.0
+    state.isAnimating = false
+    state.isRollComplete = true
   }
 }

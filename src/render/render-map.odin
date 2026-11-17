@@ -17,7 +17,7 @@ xComp := i32(xCompF)
 yCompF := math.round(f32(HEXAGON_SIZE) * 0.866025) // 0.866025 ~ sin(60)
 yComp := i32(yCompF)
 
-// x and y are the pixel coordinates of the top right corner of the hexigon
+// x and y are the pixel coordinates of the top left corner of the hexigon
 DrawHexagon :: proc(x: i32, y: i32, colour: rl.Color, sLength: i32, isFilled: bool) { 
   xCompF := math.round(f32(sLength) * 0.5) // 0.5 = cos(60)
   xComp := i32(xCompF)
