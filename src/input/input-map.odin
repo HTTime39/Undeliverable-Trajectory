@@ -6,15 +6,42 @@ import rl "vendor:raylib"
 import "core:math/rand"
 
 NodeSelectLeft :: proc() {
-  if (state.nextNodeSelection == 0) {
-    state.nextNodeSelection = len(state.nodeMap[state.currentNodeLayer+1]) - 1
+  minimum, maximum := GetMapSelectionBounds(state.currentLayerIndex, len(state.nodeMap[state.currentNodeLayer]), len(state.nodeMap[state.currentNodeLayer+1]))
+
+  if (state.nextNodeSelection == minimum) {
+    state.nextNodeSelection = maximum
   } else {
     state.nextNodeSelection -= 1
   }
 }
 
 NodeSelectRight :: proc() {
-  state.nextNodeSelection = (state.nextNodeSelection + 1) % len(state.nodeMap[state.currentNodeLayer+1])
+  minimum, maximum := GetMapSelectionBounds(state.currentLayerIndex, len(state.nodeMap[state.currentNodeLayer]), len(state.nodeMap[state.currentNodeLayer+1]))
+  
+  if (state.nextNodeSelection == maximum) {
+    state.nextNodeSelection = minimum
+  } else {
+    state.nextNodeSelection += 1
+  }
+}
+
+GetMapSelectionBounds :: proc(currentIndex:int, currentCount:int, nextCount:int) -> (int, int) {
+  // Pass the index currently at, number of nodes at current layer, number of nodes at next layer
+  minimum := 0
+  maximum := 0
+
+  if currentCount == 1 {
+    minimum = 0
+    maximum = 1
+  } else if currentCount == 2 {
+    minimum = min(currentIndex, nextCount-1)
+    maximum = min(currentIndex+1, nextCount-1)
+  } else if currentCount == 3 {
+    minimum = min(max(0, currentIndex-1), nextCount-1)
+    maximum = min(1, currentIndex, nextCount-1)
+  }
+
+  return minimum, maximum
 }
 
 NodeSelectEnter :: proc() {
@@ -25,7 +52,10 @@ NodeSelectEnter :: proc() {
   if state.nodeMap[state.currentNodeLayer][state.nextNodeSelection] != -2 {
     state.currentEncounter = state.encounterNodeList[state.nodeMap[state.currentNodeLayer][state.nextNodeSelection]]
   }
-  state.nextNodeSelection = 0
+
+  minimum, maximum := GetMapSelectionBounds(state.currentLayerIndex, len(state.nodeMap[state.currentNodeLayer]), len(state.nodeMap[state.currentNodeLayer+1]))
+
+  state.nextNodeSelection = minimum
   state.gameState = .ENCOUNTER
   state.encounterBGIndex = rand.int_range(0, 9)
 
