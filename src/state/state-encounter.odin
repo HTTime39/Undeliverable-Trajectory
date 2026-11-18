@@ -29,6 +29,10 @@ ModifyStamina :: proc(amount: int) {
   player.cStamina += amount
 }
 
+ModifyPayloadStatus :: proc(amount: int) {
+  player.cCargoStatus += amount
+}
+
 AddItemToBag :: proc(item: string, amount: int) -> string {
   currentWeight, currentVolume := GetBagInfo(player)
 

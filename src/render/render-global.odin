@@ -3,27 +3,26 @@ package render
 import "../state"
 
 import "core:fmt"
-import "core:math"
 import rl "vendor:raylib"
 
 DrawStatus :: proc() {
-  rl.DrawRectangle(0, 0, 450, 60, rl.BLACK)
+  rl.DrawRectangle(0, 0, 410, 80, rl.BLACK)
   rl.DrawRectanglePro(
-    rl.Rectangle{403, 20, 100, 60},
+    rl.Rectangle{370, 40, 115, 60},
     rl.Vector2{0, 0},
     -45,
     rl.BLACK
   )
-  rl.DrawRectangle(0, 58, 450, 2, rl.YELLOW)
+  rl.DrawRectangle(0, 78, 410, 2, rl.YELLOW)
   rl.DrawRectanglePro(
-    rl.Rectangle{440, 63, 100, 3},
+    rl.Rectangle{400, 83, 130, 3},
     rl.Vector2{0, 0},
     -45,
     rl.YELLOW
   )
-  rl.DrawRectangle(0, 60, 450, 10, rl.PURPLE)
+  rl.DrawRectangle(0, 80, 410, 10, rl.PURPLE)
   rl.DrawRectanglePro(
-    rl.Rectangle{443, 63, 100, 10},
+    rl.Rectangle{403, 83, 130, 10},
     rl.Vector2{0, 0},
     -45,
     rl.PURPLE
@@ -39,6 +38,10 @@ DrawStatus :: proc() {
   rl.DrawText("ST", 10, 2*yOffset + 16, fSize, rl.WHITE)
   rl.DrawRectangle(45, 2*yOffset + 18, 200, 10, rl.GRAY)
   rl.DrawRectangle(45, 2*yOffset + 18, i32(200*state.player.cStamina/state.player.stamina), 10, rl.YELLOW)
+
+  rl.DrawText("PS", 10, 3*yOffset + 32, fSize, rl.WHITE)
+  rl.DrawRectangle(45, 3*yOffset + 34, 200, 10, rl.GRAY)
+  rl.DrawRectangle(45, 3*yOffset + 34, i32(200*state.player.cCargoStatus/state.player.cargoStatus), 10, rl.PINK)
 
   w, v := state.GetBagInfo(state.player)
 

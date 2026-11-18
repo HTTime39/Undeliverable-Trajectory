@@ -110,6 +110,8 @@ PlayerState :: struct {
   bagCapacity : f32,
   bagVolume : int, 
   bag : [dynamic]Payload, // Payloads make reference to item names to retrieve an associated modifier
+  cargoStatus : int,
+  cCargoStatus : int
 }
 
 GetBagInfo :: proc(p:PlayerState) -> (f32, int) {
@@ -140,5 +142,7 @@ player : PlayerState = {
   100,
   100.0,
   8,
-  [dynamic]Payload{}
+  [dynamic]Payload{},
+  100,
+  100
 }

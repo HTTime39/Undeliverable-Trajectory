@@ -81,6 +81,8 @@ RollEncounter :: proc() {
           state.ModifyHealth(reward.amount)
         case "stamina":
           state.ModifyStamina(reward.amount)
+        case "payloadStatus":
+          state.ModifyPayloadStatus(reward.amount)
         case:
           state.AddItemToBag(reward.name, reward.amount)
       }
@@ -96,6 +98,8 @@ RollEncounter :: proc() {
           state.ModifyHealth(penalty.amount)
         case "stamina":
           state.ModifyStamina(penalty.amount)
+        case "payloadStatus":
+          state.ModifyPayloadStatus(penalty.amount)
         case:
           state.AddItemToBag(penalty.name, penalty.amount)
           // Should add a cargo damaged function
@@ -112,6 +116,8 @@ RollEncounter :: proc() {
         state.ModifyHealth(consume.amount)
       case "stamina":
         state.ModifyStamina(consume.amount)
+      case "payloadStatus":
+        state.ModifyPayloadStatus(consume.amount)
       case:
         // This should never get reached
     }
@@ -121,6 +127,7 @@ RollEncounter :: proc() {
   // Just print results for now, implement render later
   fmt.println(state.player.cHp)
   fmt.println(state.player.cStamina)
+  fmt.println(state.player.cCargoStatus)
   fmt.println("-----COMPLETED ENCOUNTER-----")
 
   // Cleanup
