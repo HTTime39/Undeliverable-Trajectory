@@ -57,3 +57,14 @@ AddItemToBag :: proc(item: string, amount: int) -> string {
     return string(fmt.ctprintf("No room to add %s to bag", item))
   }
 }
+
+ApplyStaminaToRoll :: proc(st:int, stMax:int, rs:f32) -> f32 {
+  if st < stMax/2 {
+  // Apply a modifier when the player stamina is below half
+    maxPenalty : f32 = 0.30 // Maximum chance reduction of 30%
+    penalty : f32 = (1 - f32(st) / f32(stMax/2)) * maxPenalty // Incur penalty up to 30% scaling linearly over the remaining stamina
+
+    return max(rs - penalty, 0) // Minimizing the return value at 0 to prevent negative numbers
+  }
+  return rs
+}

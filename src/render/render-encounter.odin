@@ -43,7 +43,8 @@ DrawEncounterDialogue :: proc(title:cstring, description:cstring="", passPercent
 
   rl.DrawText(description, 20, 650, 28, rl.WHITE)
   if passPercentage != -1 { // Only draw when there's an actual value
-    rl.DrawText(fmt.ctprintf("Roll Success: %d%%   Successes to Pass: %d", int(passPercentage*100), passCount), 20, 688, 28, rl.WHITE)
+    rs := state.ApplyStaminaToRoll(state.player.cStamina, state.player.stamina, passPercentage)
+    rl.DrawText(fmt.ctprintf("Roll Success: %d%%   Successes to Pass: %d", int(rs*100), passCount), 20, 688, 28, rl.WHITE)
   }
   
   rl.DrawLineEx(rl.Vector2{0, 577}, rl.Vector2{1280, 577}, 10, rl.YELLOW)

@@ -26,8 +26,9 @@ RollEncounter :: proc() {
   }
 
   // Preparing for roll
-  rollSuccessChance := state.currentEncounter.passPercentage
+  rollSuccessChance := state.ApplyStaminaToRoll(state.player.cStamina, state.player.stamina, state.currentEncounter.passPercentage)
   rollCount := state.currentEncounter.passCount
+  fmt.println(rollSuccessChance)
 
   // Applying modifiers
   fmt.println("Applying modifiers...")
