@@ -25,6 +25,8 @@ DeliveryMenuEnter :: proc() {
   state.gameState = .MAP
   state.selectedDelivery = 0
 
+  state.ResetPlayer()
+
   for payload in state.currentDelivery.payloads {
     append(&state.player.bag, payload)
   }

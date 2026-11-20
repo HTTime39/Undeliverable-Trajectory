@@ -2,6 +2,7 @@ package input
 
 import "../state"
 
+import "core:fmt"
 import rl "vendor:raylib"
 import "core:math/rand"
 
@@ -51,6 +52,10 @@ NodeSelectEnter :: proc() {
   // Cleanup
   if state.nodeMap[state.currentNodeLayer][state.nextNodeSelection] != -2 {
     state.currentEncounter = state.encounterNodeList[state.nodeMap[state.currentNodeLayer][state.nextNodeSelection]]
+  } else {
+  // This is runs when the player has reached the ending node
+    state.gameState = .ENDING
+    return
   }
 
   minimum, maximum := GetMapSelectionBounds(state.currentLayerIndex, len(state.nodeMap[state.currentNodeLayer]), len(state.nodeMap[state.currentNodeLayer+1]))

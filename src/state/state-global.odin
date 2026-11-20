@@ -13,7 +13,8 @@ GameState :: enum {
   TITLE, 
   DELIVERY_MENU,
   MAP,
-  ENCOUNTER
+  ENCOUNTER,
+  ENDING
 }
 
 // Current game state
@@ -135,6 +136,7 @@ GetBagInfo :: proc(p:PlayerState) -> (f32, int) {
   return weight, volume
 }
 
+// This needs to be read from a JSON later
 player : PlayerState = {
   100,
   100,

@@ -48,6 +48,9 @@ main :: proc() {
       case .ENCOUNTER:
         render.DrawEncounter(deltaT)
         if !state.isAnimating do input.ControlEncounter()
+      case .ENDING:
+        render.DrawEnding()
+        input.ControlEnding()
     }
 
 		rl.EndDrawing()

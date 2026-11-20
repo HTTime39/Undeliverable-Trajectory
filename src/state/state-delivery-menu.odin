@@ -38,3 +38,10 @@ LoadDeliveriesData :: proc() {
     deliveryList = []Delivery{{title = "Couldn't load deliveries", destination = "", payloads = {}, encounterLayers = 0}}
   }
 }
+
+ResetPlayer :: proc() {
+  player.cHp = player.hp
+  player.cStamina = player.stamina
+  player.cCargoStatus = player.cargoStatus
+  player.bag = {}
+}
