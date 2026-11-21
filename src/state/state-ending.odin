@@ -1,5 +1,7 @@
 package state
 
+rewardSelected := 0
+
 CalculateScore :: proc(p:PlayerState, delivery:Delivery) -> (int, string) {
   hSegment := min(1.0, f32(p.cHp)/(f32(p.hp)/2)) * 100
   // Health segment starts with base score of 100
@@ -32,4 +34,40 @@ CalculateScore :: proc(p:PlayerState, delivery:Delivery) -> (int, string) {
   }
 
   return totalScore, letterScore
+}
+
+EndingSelectUp :: proc() {
+  if rewardSelected == 0 {
+    rewardSelected = 3
+  } else {
+    rewardSelected -= 1
+  }
+}
+
+EndingSelectDown :: proc() {
+  if rewardSelected == 3 {
+    rewardSelected = 0
+  } else {
+    rewardSelected += 1
+  }
+}
+
+HandleSelectedReward :: proc() {
+  switch rewardSelected {
+    case 0:
+      player.hp += 5
+    case 1: 
+      player.stamina += 5
+    case 2:
+      player.bagCapacity += 10
+    case 3: player.bagVolume += 1
+  }
+  rewardSelected = 0
+}
+
+EndingEnter :: proc() {
+  HandleSelectedReward()
+  ResetPlayer()
+  SavePlayerState(player)
+  gameState = .TITLE
 }

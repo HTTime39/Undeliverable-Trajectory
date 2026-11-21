@@ -2,8 +2,8 @@
   {
     "title": "Steep Cliff",
     "description": "The only way down is a jagged rock face.",
-    "passPercentage": 0.75,
-    "passCount": 2,
+    "passPercentage": 0.70,
+    "passCount": 3,
     "modifiers": [
       {
         "name": "rope",
@@ -62,7 +62,7 @@
   {
     "title": "Wild Triceratops",
     "description": "A wild triceratops blocks the path. Sneak around or try to distract it.",
-    "passPercentage": 0.80,
+    "passPercentage": 0.70,
     "passCount": 3,
     "modifiers": [
       {

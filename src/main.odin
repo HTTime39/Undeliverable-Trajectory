@@ -12,6 +12,9 @@ main :: proc() {
   defer rl.CloseWindow()
   rl.SetTargetFPS(60)
 
+  // Loading player data
+  state.player = state.LoadPlayerState()
+
   // Load delivery menu data
   state.LoadDeliveriesData()
   state.LoadEncounterNodes()

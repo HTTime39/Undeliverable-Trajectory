@@ -115,6 +115,8 @@ PlayerState :: struct {
   cCargoStatus : int
 }
 
+player : PlayerState
+
 GetBagInfo :: proc(p:PlayerState) -> (f32, int) {
   // Returns the passed player's current bag WEIGHT and VOLUME
   weight : f32 = 0.0
@@ -136,15 +138,48 @@ GetBagInfo :: proc(p:PlayerState) -> (f32, int) {
   return weight, volume
 }
 
-// This needs to be read from a JSON later
-player : PlayerState = {
-  100,
-  100,
-  100,
-  100,
-  100.0,
-  8,
-  [dynamic]Payload{},
-  100,
-  100
+LoadPlayerState :: proc() -> PlayerState {
+  if os.exists("player.json") {
+    data, readError := os.read_entire_file("player.json", context.allocator)
+    if readError == nil {
+      defer delete(data)
+
+      loadedPlayer : PlayerState
+      parseError := json.unmarshal(data, &loadedPlayer)
+      if parseError == nil {
+        return loadedPlayer
+      }
+    }
+  }
+
+  defaultPlayer : PlayerState = {
+    100,
+    100,
+    100,
+    100,
+    100.0,
+    8,
+    [dynamic]Payload{},
+    100,
+    100
+  }
+
+  data, marshalError := json.marshal(defaultPlayer)
+  if marshalError == nil {
+    defer delete(data)
+    _ = os.write_entire_file("player.json", data)
+  }
+
+  return defaultPlayer
+}
+
+SavePlayerState :: proc(p: PlayerState) -> bool {
+  data, marshalError := json.marshal(p)
+  if marshalError != nil {
+    return false
+  }
+  defer delete(data)
+
+  writeError := os.write_entire_file("player.json", data)
+  return writeError == nil
 }
