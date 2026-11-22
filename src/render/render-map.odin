@@ -153,6 +153,17 @@ DrawMap :: proc() {
 
         if i == 1 && j == state.nextNodeSelection{
           DrawHexagon(TWIN_OFFSET[j], ROW_OFFSET[i], rl.YELLOW, HEXAGON_SIZE, true)
+          // DrawHexagon(TWIN_OFFSET[j], ROW_OFFSET[i], rl.PURPLE, HEXAGON_SIZE, false)
+          // Drawing selector overlay
+          rl.DrawLine(TWIN_OFFSET[j] - xComp, ROW_OFFSET[i] - 5, TWIN_OFFSET[j] - xComp + 15, ROW_OFFSET[i] - 5, rl.PURPLE)
+          rl.DrawLine(TWIN_OFFSET[j] - xComp, ROW_OFFSET[i] - 5, TWIN_OFFSET[j] - xComp, ROW_OFFSET[i] + 10, rl.PURPLE)
+          rl.DrawLine(TWIN_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] - 5, TWIN_OFFSET[j] + HEXAGON_SIZE + xComp - 15, ROW_OFFSET[i] - 5, rl.PURPLE)
+          rl.DrawLine(TWIN_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] - 5, TWIN_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 10, rl.PURPLE)
+          
+          rl.DrawLine(TWIN_OFFSET[j] - xComp, ROW_OFFSET[i] + 2*yComp + 5, TWIN_OFFSET[j] - xComp + 15, ROW_OFFSET[i] + 2*yComp + 5, rl.PURPLE)
+          rl.DrawLine(TWIN_OFFSET[j] - xComp, ROW_OFFSET[i] + 2*yComp + 5, TWIN_OFFSET[j] - xComp, ROW_OFFSET[i] + 2*yComp - 10, rl.PURPLE)
+          rl.DrawLine(TWIN_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 2*yComp + 5, TWIN_OFFSET[j] + HEXAGON_SIZE + xComp - 15, ROW_OFFSET[i] + 2*yComp + 5, rl.PURPLE)
+          rl.DrawLine(TWIN_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 2*yComp + 5, TWIN_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 2*yComp - 10, rl.PURPLE)
         }
 
         if i == 0 && j == state.currentLayerIndex {
@@ -165,6 +176,17 @@ DrawMap :: proc() {
         
         if i == 1 && j == state.nextNodeSelection{
           DrawHexagon(TRIPLET_OFFSET[j], ROW_OFFSET[i], rl.YELLOW, HEXAGON_SIZE, true)
+
+          // Drawing selector overlay
+          rl.DrawLine(TRIPLET_OFFSET[j] - xComp, ROW_OFFSET[i] - 5, TRIPLET_OFFSET[j] - xComp + 15, ROW_OFFSET[i] - 5, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[j] - xComp, ROW_OFFSET[i] - 5, TRIPLET_OFFSET[j] - xComp, ROW_OFFSET[i] + 10, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] - 5, TRIPLET_OFFSET[j] + HEXAGON_SIZE + xComp - 15, ROW_OFFSET[i] - 5, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] - 5, TRIPLET_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 10, rl.PURPLE)
+          
+          rl.DrawLine(TRIPLET_OFFSET[j] - xComp, ROW_OFFSET[i] + 2*yComp + 5, TRIPLET_OFFSET[j] - xComp + 15, ROW_OFFSET[i] + 2*yComp + 5, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[j] - xComp, ROW_OFFSET[i] + 2*yComp + 5, TRIPLET_OFFSET[j] - xComp, ROW_OFFSET[i] + 2*yComp - 10, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 2*yComp + 5, TRIPLET_OFFSET[j] + HEXAGON_SIZE + xComp - 15, ROW_OFFSET[i] + 2*yComp + 5, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 2*yComp + 5, TRIPLET_OFFSET[j] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 2*yComp - 10, rl.PURPLE)
         }
 
         if i == 0 && j == state.currentLayerIndex {
@@ -177,6 +199,17 @@ DrawMap :: proc() {
 
         if i == 1 && j == state.nextNodeSelection{
           DrawHexagon(TRIPLET_OFFSET[1], ROW_OFFSET[i], rl.YELLOW, HEXAGON_SIZE, true)
+          
+          // Drawing selector overlay
+          rl.DrawLine(TRIPLET_OFFSET[1] - xComp, ROW_OFFSET[i] - 5, TRIPLET_OFFSET[1] - xComp + 15, ROW_OFFSET[i] - 5, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[1] - xComp, ROW_OFFSET[i] - 5, TRIPLET_OFFSET[1] - xComp, ROW_OFFSET[i] + 10, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[1] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] - 5, TRIPLET_OFFSET[1] + HEXAGON_SIZE + xComp - 15, ROW_OFFSET[i] - 5, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[1] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] - 5, TRIPLET_OFFSET[1] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 10, rl.PURPLE)
+          
+          rl.DrawLine(TRIPLET_OFFSET[1] - xComp, ROW_OFFSET[i] + 2*yComp + 5, TRIPLET_OFFSET[1] - xComp + 15, ROW_OFFSET[i] + 2*yComp + 5, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[1] - xComp, ROW_OFFSET[i] + 2*yComp + 5, TRIPLET_OFFSET[1] - xComp, ROW_OFFSET[i] + 2*yComp - 10, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[1] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 2*yComp + 5, TRIPLET_OFFSET[1] + HEXAGON_SIZE + xComp - 15, ROW_OFFSET[i] + 2*yComp + 5, rl.PURPLE)
+          rl.DrawLine(TRIPLET_OFFSET[1] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 2*yComp + 5, TRIPLET_OFFSET[1] + HEXAGON_SIZE + xComp, ROW_OFFSET[i] + 2*yComp - 10, rl.PURPLE)
         }
 
         if i == 0 && j == state.currentLayerIndex {

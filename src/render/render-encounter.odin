@@ -56,33 +56,38 @@ selectTogglePrevT : f64 = 0.0
 
 DrawBagMenu :: proc(inventory:[dynamic]state.Payload) {
   rl.DrawRectangle(800, 0, 480, 570, rl.BLACK)
-
-  currentTime := rl.GetTime()
-
-  for payload, i in inventory {
-    c := rl.WHITE
-    if i == state.bagSelected {
-      c = rl.YELLOW
-      if state.usingItems[i] {
+  if !state.isAnimating {
+    currentTime := rl.GetTime()
+  
+    for payload, i in inventory {
+      c := rl.WHITE
+      if i == state.bagSelected {
         c = rl.YELLOW
-        if currentTime - selectTogglePrevT >= 0.5 {
-          selectToggle = !selectToggle
-          selectTogglePrevT = currentTime
+
+        rl.DrawLine(1260, i32(43 + 32 * i), 1240, i32(33 + 32 * i), rl.PURPLE)
+        rl.DrawLine(1260, i32(23 + 32 * i), 1240, i32(33 + 32 * i), rl.PURPLE)
+
+        if state.usingItems[i] {
+          c = rl.YELLOW
+          if currentTime - selectTogglePrevT >= 0.5 {
+            selectToggle = !selectToggle
+            selectTogglePrevT = currentTime
+          }
+          if selectToggle {
+            c = rl.PURPLE
+          }
         }
-        if selectToggle {
-          c = rl.PURPLE
-        }
+      } else if state.usingItems[i] {
+        c = rl.PURPLE
       }
-    } else if state.usingItems[i] {
-      c = rl.PURPLE
+  
+      rl.DrawText(payload.name, 820, i32(20 + 32 * i), 28, c)
+      rl.DrawLine(825, i32(50 + 32 * i), 1265, i32(50 + 32 * i), rl.WHITE)
     }
-
-    rl.DrawText(payload.name, 820, i32(20 + 32 * i), 28, c)
-    rl.DrawLine(825, i32(50 + 32 * i), 1265, i32(50 + 32 * i), rl.WHITE)
   }
-
-  rl.DrawLineEx(rl.Vector2{807, 0}, rl.Vector2{807, 570}, 10, rl.YELLOW)
-  rl.DrawRectangle(800, 0, 10, 570, rl.PURPLE)
+  
+    rl.DrawLineEx(rl.Vector2{807, 0}, rl.Vector2{807, 570}, 10, rl.YELLOW)
+    rl.DrawRectangle(800, 0, 10, 570, rl.PURPLE)
 } 
 
 DrawEncounterEntity :: proc() {
