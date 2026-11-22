@@ -80,9 +80,14 @@ DrawBagMenu :: proc(inventory:[dynamic]state.Payload) {
       } else if state.usingItems[i] {
         c = rl.PURPLE
       }
+
+      lc := rl.WHITE
+      if i == len(state.currentDelivery.payloads) - 1 {
+        lc = rl.PINK
+      }
   
       rl.DrawText(payload.name, 820, i32(20 + 32 * i), 28, c)
-      rl.DrawLine(825, i32(50 + 32 * i), 1265, i32(50 + 32 * i), rl.WHITE)
+      rl.DrawLine(825, i32(50 + 32 * i), 1265, i32(50 + 32 * i), lc)
     }
   }
   

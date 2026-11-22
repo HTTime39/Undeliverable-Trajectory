@@ -135,6 +135,7 @@ RollEncounter :: proc() {
   state.ClearUsingItems()
   state.isAnimating = true
   state.isRolling = true
+  state.bagSelected = 0
 }
 
 InventorySelectUp :: proc() {
@@ -150,6 +151,12 @@ InventorySelectDown :: proc() {
 }
 
 InventoryAddToUse :: proc() {
+// Adding a bag item to the pool of items to be used during this encounter
+  // Prevent deliverable cargo from being selected for use
+  if state.bagSelected < len(state.currentDelivery.payloads) {
+    return
+  }
+
   state.usingItems[state.bagSelected] = !state.usingItems[state.bagSelected]
 }
 

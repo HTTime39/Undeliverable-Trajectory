@@ -21,7 +21,7 @@
         "amount": -10
       },
       {
-        "name": "payload",
+        "name": "payloadStatus",
         "amount": -5
       }
     ],
