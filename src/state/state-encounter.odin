@@ -9,6 +9,7 @@ usingItems : [dynamic]bool // These are the items that will get used, indices
 
 isRolling : bool = false // Whether or not the dice roll animation is playing
 isRollComplete : bool = false
+currentRollPercentage : f32 = 0
 rollResults : [5]bool
 
 encounterSprites: map[string]rl.Texture2D
@@ -67,4 +68,25 @@ ApplyStaminaToRoll :: proc(st:int, stMax:int, rs:f32) -> f32 {
     return max(rs - penalty, 0) // Minimizing the return value at 0 to prevent negative numbers
   }
   return rs
+}
+
+ApplyItemsToRoll :: proc(rollSuccessChance:f32) -> f32 {
+  result := rollSuccessChance
+
+  for payload, i in player.bag {
+  // Iterate over items in the players bag
+    if usingItems[i] {
+    // If the item is being used
+      for mod in currentEncounter.modifiers {
+      // Iterate over items that have a modifier on the current event
+        if payload.name == mod.name {
+        // If the item being used has the same name as an item in the modifier list
+          result += mod.modifier
+          fmt.println(mod)
+        }
+      }
+    }
+  }
+
+  return result
 }

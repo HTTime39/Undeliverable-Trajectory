@@ -44,6 +44,17 @@ DrawEncounterDialogue :: proc(title:cstring, description:cstring="", passPercent
   rl.DrawText(description, 20, 650, 28, rl.WHITE)
   if passPercentage != -1 { // Only draw when there's an actual value
     rs := state.ApplyStaminaToRoll(state.player.cStamina, state.player.stamina, passPercentage)
+    // Apply the items being used too
+    rs1 := state.ApplyItemsToRoll(rs)
+    // Only show if it's net positve; hide negative modifiers before the roll is completed
+    if rs1 > rs || state.isAnimating || state.isRollComplete {
+      if state.isAnimating || state.isRollComplete {
+        rs = state.currentRollPercentage
+      } else {
+        rs = rs1
+      }
+    }
+
     rl.DrawText(fmt.ctprintf("Roll Success: %d%%   Successes to Pass: %d", int(rs*100), passCount), 20, 688, 28, rl.WHITE)
   }
   

@@ -32,20 +32,10 @@ RollEncounter :: proc() {
 
   // Applying modifiers
   fmt.println("Applying modifiers...")
-  for payload, i in state.player.bag {
-  // Iterate over items in the players bag
-    if state.usingItems[i] {
-    // If the item is being used
-      for mod in state.currentEncounter.modifiers {
-      // Iterate over items that have a modifier on the current event
-        if payload.name == mod.name {
-        // If the item being used has the same name as an item in the modifier list
-          rollSuccessChance += mod.modifier
-          fmt.println(mod)
-        }
-      }
-    }
-  }
+  rollSuccessChance = state.ApplyItemsToRoll(rollSuccessChance)
+
+  // Assigning for rendering later
+  state.currentRollPercentage = rollSuccessChance
 
   // Remove items being used from the player's bag
   for i := len(state.player.bag)-1; i >=0; i-=1 {
