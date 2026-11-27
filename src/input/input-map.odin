@@ -69,8 +69,8 @@ NodeSelectEnter :: proc() {
   state.isAnimating = true
 }
 
-MAP_BINDINGS:[6]Binding = {
-  {.BACKSPACE, state.DecrementState},
+MAP_BINDINGS:[]Binding = {
+  // {.BACKSPACE, state.DecrementState},
   {.A, NodeSelectLeft},
   {.LEFT, NodeSelectLeft},
   {.D, NodeSelectRight},

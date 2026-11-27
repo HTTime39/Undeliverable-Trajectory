@@ -1,9 +1,14 @@
 {
-
-  "berries": {
+  "berries": 
+  {
     "size": "s",
     "weight": 1.0
   }, 
+  "capacitor disc": 
+  {
+    "size": "s",
+    "weight": 2.5
+  },
   "knife":
   {
     "size": "s",

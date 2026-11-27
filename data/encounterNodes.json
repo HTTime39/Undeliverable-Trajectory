@@ -1,8 +1,204 @@
 [
   {
+    "title": "Abandoned Campsite",
+    "description": "No one's been here for a while. It might be a good place to try to rest and resupply.",
+    "passPercentage": 0.65,
+    "passCount": 3,
+    "modifiers": [],
+    "reward": [
+      {
+        "name": "health",
+        "amount": 15
+      }
+    ],
+    "fail": [],
+    "consume": [],
+    "image": ""
+  },
+  {
+    "title": "Abandoned Depot",
+    "description": "There aren't any replicants here anymore. Maybe some tools and supplies remain.",
+    "passPercentage": 0.6,
+    "passCount": 3,
+    "modifiers": [],
+    "reward": [
+      {
+        "name": "capacitor disc",
+        "amount": 1
+      },
+      {
+        "name": "knife",
+        "amount": 1
+      }
+    ],
+    "fail": [],
+    "consume": [],
+    "image": ""
+  },
+  {
+    "title": "Calm River",
+    "description": "The water looks clear. Maybe you should drink before crossing.",
+    "passPercentage": 0.5,
+    "passCount": 3,
+    "modifiers": [],
+    "reward": [
+      {
+        "name": "health",
+        "amount": 10
+      }
+    ],
+    "fail": [
+      {
+        "name": "payloadStatus",
+        "amount": -5
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
+        "amount": -5
+      }
+    ],
+    "image": ""
+  },
+  {
+    "title": "Dilophosaur Corpse",
+    "description": "A fresh corpse. Their might still be a little meat left.",
+    "passPercentage": 0.7,
+    "passCount": 2,
+    "modifiers": [],
+    "reward": [
+      {
+        "name": "meat",
+        "amount": 1
+      }
+    ],
+    "fail": [],
+    "consume": [],
+    "image": "rex"
+  },
+  {
+    "title": "Flock of Dimorphodon",
+    "description": "They take turns swooping down to try and snatch snacks from your cargo.",
+    "passPercentage": 0.55,
+    "passCount": 3,
+    "modifiers": [],
+    "reward": [
+      {
+        "name": "knife",
+        "amount": 1
+      }
+    ],
+    "fail": [
+      {
+        "name": "payloadStatus",
+        "amount": -5
+      }
+    ],
+    "consume": [],
+    "image": "rex"
+  },
+  {
+    "title": "Leafy Clearing",
+    "description": "Plenty of leaves fill this area. Keeping some might be useful later.",
+    "passPercentage": 0.55,
+    "passCount": 2,
+    "modifiers": [],
+    "reward": [
+      {
+        "name": "leaves",
+        "amount": 1
+      }
+    ],
+    "fail": [],
+    "consume": [],
+    "image": ""
+  },
+  {
+    "title": "Piranhas",
+    "description": "Crossing through their territory is sure to ruin your shoes.",
+    "passPercentage": 0.6,
+    "passCount": 2,
+    "modifiers": [
+      {
+        "name": "capacitor disc",
+        "modifier": 0.4
+      }
+    ],
+    "reward": [],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -5
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
+        "amount": -5
+      }
+    ],
+    "image": "rex"
+  },
+  {
+    "title": "Replicant Diplodocus",
+    "description": "Originally made to pack and load cargo. It doesn't have much to do in the wild.",
+    "passPercentage": 0.65,
+    "passCount": 3,
+    "modifiers": [
+      {
+        "name": "capacitor disc",
+        "modifier": -1
+      }
+    ],
+    "reward": [
+      {
+        "name": "payloadStatus",
+        "amount": 20
+      },
+      {
+        "name": "capacitor disc",
+        "amount": 1
+      },
+      {
+        "name": "capacitor disc",
+        "amount": 1
+      }
+    ],
+    "fail": [
+      {
+        "name": "payloadStatus",
+        "amount": -5
+      }
+    ],
+    "consume": [],
+    "image": "rex"
+  },
+  {
+    "title": "Rushing Rapids",
+    "description": "The water's moving pretty fast. Take care to not fall while crossing.",
+    "passPercentage": 0.6,
+    "passCount": 3,
+    "modifiers": [],
+    "reward": [],
+    "fail": [
+      {
+        "name": "payloadStatus",
+        "amount": -15
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
+        "amount": -10
+      }
+    ],
+    "image": ""
+  },
+  {
     "title": "Steep Cliff",
     "description": "The only way down is a jagged rock face.",
-    "passPercentage": 0.70,
+    "passPercentage": 0.7,
     "passCount": 3,
     "modifiers": [
       {
@@ -34,6 +230,32 @@
     "image": ""
   },
   {
+    "title": "Triceratops Corpse",
+    "description": "A lot of meat's left on the bones. Some might still be fresh.",
+    "passPercentage": 0.5,
+    "passCount": 3,
+    "modifiers": [
+      {
+        "name": "knife",
+        "modifier": 0.2
+      }
+    ],
+    "reward": [
+      {
+        "name": "meat",
+        "amount": 2
+      }
+    ],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -5
+      }
+    ],
+    "consume": [],
+    "image": "rex"
+  },
+  {
     "title": "Viny Pass",
     "description": "The path narrows ahead with vines crossing through the undergrowth.",
     "passPercentage": 0.55,
@@ -41,12 +263,16 @@
     "modifiers": [
       {
         "name": "knife",
-        "modifier": 0.30
+        "modifier": 0.3
       }
     ],
     "reward": [
       {
         "name": "vines",
+        "amount": 1
+      },
+      {
+        "name": "leaves",
         "amount": 1
       }
     ],
@@ -60,18 +286,111 @@
     "image": ""
   },
   {
-    "title": "Wild Triceratops",
-    "description": "A wild triceratops blocks the path. Sneak around or try to distract it.",
-    "passPercentage": 0.70,
+    "title": "Wild Dilophosaur",
+    "description": "Small and fast with knife like claws. Look out for their venom too.",
+    "passPercentage": 0.7,
     "passCount": 3,
     "modifiers": [
       {
-        "name": "berries",
-        "modifier": 0.05
+        "name": "knife",
+        "modifier": 0.15
+      }
+    ],
+    "reward": [
+      {
+        "name": "knife",
+        "amount": 1
+      }
+    ],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -15
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
+        "amount": -5
+      }
+    ],
+    "image": "rex"
+  },
+  {
+    "title": "Wild Dodo",
+    "description": "A common meat source on the frontier, if you can catch them.",
+    "passPercentage": 0.6,
+    "passCount": 3,
+    "modifiers": [
+      {
+        "name": "knife",
+        "modifier": 0.1
+      }
+    ],
+    "reward": [
+      {
+        "name": "meat",
+        "amount": 1
+      }
+    ],
+    "fail": [
+      {
+        "name": "stamina",
+        "amount": -5
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
+        "amount": -5
+      }
+    ],
+    "image": "rex"
+  },
+  {
+    "title": "Replicant Hunter",
+    "description": "A tall spider like combat replicant. Wouldn't want to get stabbed by those legs.",
+    "passPercentage": 0.65,
+    "passCount": 4,
+    "modifiers": [
+      {
+        "name": "capacitor disc",
+        "modifier": 0.15
+      }
+    ],
+    "reward": [
+      {
+        "name": "capacitor disc",
+        "amount": 1
+      }
+    ],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -30
       },
       {
-        "name": "leaves",
-        "modifier": 0.25
+        "name": "payloadStatus",
+        "amount": -20
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
+        "amount": -15
+      }
+    ],
+    "image": "rex"
+  },
+  {
+    "title": "Replicant Mammoth",
+    "description": "Originally created as a pack mule. It might get excited at the sight of your cargo.",
+    "passPercentage": 0.6,
+    "passCount": 3,
+    "modifiers": [
+      {
+        "name": "capacitor disc",
+        "modifier": 0.2
       }
     ],
     "reward": [],
@@ -82,11 +401,90 @@
       },
       {
         "name": "payloadStatus",
+        "amount": -25
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
         "amount": -10
       }
     ],
-    "consume": [],
-    "image": "triceratops"
+    "image": "rex"
+  },
+  {
+    "title": "Replicant Probe",
+    "description": "Not the most dangerous replicant, but it's best to avoid detection and its lasers.",
+    "passPercentage": 0.65,
+    "passCount": 3,
+    "modifiers": [
+      {
+        "name": "capacitor disc",
+        "modifier": 0.15
+      }
+    ],
+    "reward": [
+      {
+        "name": "capacitor disc",
+        "amount": 1
+      }
+    ],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -15
+      },
+      {
+        "name": "payloadStatus",
+        "amount": -5
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
+        "amount": -5
+      }
+    ],
+    "image": "rex"
+  },
+  {
+    "title": "Wild Raptor",
+    "description": "Very fast, very dangerous, but it might be possible to come out on top.",
+    "passPercentage": 0.6,
+    "passCount": 3,
+    "modifiers": [
+      {
+        "name": "knife",
+        "modifier": 0.1
+      }
+    ],
+    "reward": [
+      {
+        "name": "knife",
+        "amount": 1
+      },
+      {
+        "name": "meat",
+        "amount": 1
+      }
+    ],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -15
+      },
+      {
+        "name": "payloadStatus",
+        "amount": -5
+      }
+    ],
+    "consume": [
+      {
+        "name": "stamina",
+        "amount": -5
+      }
+    ],
+    "image": "rex"
   },
   {
     "title": "Wild Rex",
@@ -121,5 +519,63 @@
       }
     ],
     "image": "rex"
+  },
+  {
+    "title": "Wild Stegosaurus",
+    "description": "A wild stegosaurus appears. Giving it some food might convince it to move peacefully.",
+    "passPercentage": 0.7,
+    "passCount": 3,
+    "modifiers": [
+      {
+        "name": "leaves",
+        "modifier": 0.25
+      },
+      {
+        "name": "meat",
+        "modifier": -0.25
+      }
+    ],
+    "reward": [],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -10
+      },
+      {
+        "name": "payloadStatus",
+        "amount": -5
+      }
+    ],
+    "consume": [],
+    "image": "rex"
+  },
+  {
+    "title": "Wild Triceratops",
+    "description": "A wild triceratops blocks the path. Sneak around or try to distract it.",
+    "passPercentage": 0.7,
+    "passCount": 3,
+    "modifiers": [
+      {
+        "name": "berries",
+        "modifier": 0.05
+      },
+      {
+        "name": "leaves",
+        "modifier": 0.25
+      }
+    ],
+    "reward": [],
+    "fail": [
+      {
+        "name": "health",
+        "amount": -10
+      },
+      {
+        "name": "payloadStatus",
+        "amount": -10
+      }
+    ],
+    "consume": [],
+    "image": "triceratops"
   }
 ]

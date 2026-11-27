@@ -7,7 +7,7 @@ import "core:math/rand"
 import rl "vendor:raylib"
 
 ENCOUNTER_BINDINGS:[]Binding = {
-  {.BACKSPACE, state.DecrementState},
+  // {.BACKSPACE, state.DecrementState},
   {.W, InventorySelectUp},
   {.UP, InventorySelectUp},
   {.S, InventorySelectDown},
@@ -25,14 +25,25 @@ RollEncounter :: proc() {
     return
   }
 
+  fmt.println("Success Raw:")
+  fmt.println(state.currentEncounter.passPercentage)
+
   // Preparing for roll
   rollSuccessChance := state.ApplyStaminaToRoll(state.player.cStamina, state.player.stamina, state.currentEncounter.passPercentage)
-  rollCount := state.currentEncounter.passCount
+
+  fmt.println("Success with stamina modifier:")
   fmt.println(rollSuccessChance)
 
+  rollCount := state.currentEncounter.passCount
+
   // Applying modifiers
-  fmt.println("Applying modifiers...")
+  // fmt.println("Applying modifiers...")
   rollSuccessChance = state.ApplyItemsToRoll(rollSuccessChance)
+
+  rollSuccessChance = clamp(rollSuccessChance, 0.0, 1.0)
+
+  fmt.println("Success after applying modifiers:")
+  fmt.println(rollSuccessChance)
 
   // Assigning for rendering later
   state.currentRollPercentage = rollSuccessChance
@@ -50,7 +61,7 @@ RollEncounter :: proc() {
   fmt.println("Making rolls...")
   for i in 0..<5 {
     // Rolling the dice 5 times
-    if rand.float32() <= state.currentEncounter.passPercentage {
+    if rand.float32() < state.currentRollPercentage {
     // Increment the success counter when a roll passes
       successes += 1
       state.rollResults[i] = true

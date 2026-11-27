@@ -4,7 +4,7 @@ import "../state"
 
 import rl "vendor:raylib"
 
-ENDING_BINDINGS:[5]Binding = {
+ENDING_BINDINGS:[]Binding = {
   {.ENTER, state.EndingEnter},
   {.W, state.EndingSelectUp},
   {.UP, state.EndingSelectUp},

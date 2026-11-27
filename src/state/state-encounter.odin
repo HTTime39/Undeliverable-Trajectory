@@ -24,14 +24,32 @@ ClearUsingItems :: proc() {
 
 ModifyHealth :: proc(amount: int) {
   player.cHp += amount
+  // Bounding the value, prevent overflow in UI
+  if player.cHp > player.hp {
+    player.cHp = player.hp
+  } else if player.cHp < 0 {
+    player.cHp = 0
+  }
 }
 
 ModifyStamina :: proc(amount: int) {
   player.cStamina += amount
+  // Bounding the value, prevent overflow in UI
+  if player.cStamina > player.stamina {
+    player.cStamina = player.stamina
+  } else if player.cStamina < 0 {
+    player.cStamina = 0
+  }
 }
 
 ModifyPayloadStatus :: proc(amount: int) {
   player.cCargoStatus += amount
+  // Bounding the value, prevent overflow in UI
+  if player.cCargoStatus > player.cargoStatus {
+    player.cCargoStatus = player.cargoStatus
+  } else if player.cCargoStatus < 0 {
+    player.cCargoStatus = 0
+  }
 }
 
 AddItemToBag :: proc(item: string, amount: int) -> string {
@@ -82,7 +100,6 @@ ApplyItemsToRoll :: proc(rollSuccessChance:f32) -> f32 {
         if payload.name == mod.name {
         // If the item being used has the same name as an item in the modifier list
           result += mod.modifier
-          fmt.println(mod)
         }
       }
     }

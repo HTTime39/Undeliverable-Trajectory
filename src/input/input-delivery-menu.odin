@@ -32,13 +32,13 @@ DeliveryMenuEnter :: proc() {
   }
 }
 
-DELIVERY_BINDINGS:[6]Binding = {
+DELIVERY_BINDINGS:[]Binding = {
   {.W, DeliveryMenuUp},
   {.UP, DeliveryMenuUp},
   {.S, DeliveryMenuDown},
   {.DOWN, DeliveryMenuDown},
   {.ENTER, DeliveryMenuEnter},
-  {.BACKSPACE, state.DecrementState},
+  // {.BACKSPACE, state.DecrementState},
 }
 
 ControlDeliveryMenu :: proc() {
