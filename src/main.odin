@@ -39,7 +39,7 @@ main :: proc() {
     rl.ClearBackground(rl.BLACK)
 
     switch state.gameState {
-      case .ENDING:
+      case .TITLE:
         render.DrawTitle(input.titleMenuSelected)
         input.ControlTitleMenu()
       case .DELIVERY_MENU:
@@ -51,7 +51,7 @@ main :: proc() {
       case .ENCOUNTER:
         render.DrawEncounter(deltaT)
         if !state.isAnimating do input.ControlEncounter()
-      case .TITLE:
+      case .ENDING:
         render.DrawEnding()
         input.ControlEnding()
     }
