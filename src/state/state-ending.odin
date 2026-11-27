@@ -55,11 +55,11 @@ EndingSelectDown :: proc() {
 HandleSelectedReward :: proc() {
   switch rewardSelected {
     case 0:
-      player.hp += 5
+      player.hp += 15
     case 1: 
-      player.stamina += 5
+      player.stamina += 15
     case 2:
-      player.bagCapacity += 10
+      player.bagCapacity += 15
     case 3: player.bagVolume += 1
   }
   rewardSelected = 0
